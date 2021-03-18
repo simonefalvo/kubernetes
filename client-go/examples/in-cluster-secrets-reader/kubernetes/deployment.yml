@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: secretreader
+  labels:
+    app: secretreader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: secretreader
+  template:
+    metadata:
+      labels:
+        app: secretreader
+    spec:
+      serviceAccountName: secretreader
+      containers:
+      - name: secretreader
+        image: smvfal/secretreader:latest
+        imagePullPolicy: Always
+        env:
+          - name: SECRET_NAME
+            value: "basic-auth"
+          - name: NAMESPACE
+            value: "openfaas"

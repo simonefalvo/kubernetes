@@ -1,0 +1,3 @@
+client-go/examples/*/vendor/
+client-go/examples/*/bin/
+client-go/examples/*/.idea/
